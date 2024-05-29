@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Compiler\\Compiled\\Compiled.csproj",
+      "projectUniqueName": "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
       "projectName": "Compiled",
-      "projectPath": "C:\\Compiler\\Compiled\\Compiled.csproj",
+      "projectPath": "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
       "packagesPath": "C:\\Users\\adria\\.nuget\\packages\\",
-      "outputPath": "C:\\Compiler\\Compiled\\obj\\",
+      "outputPath": "C:\\Compiler\\Gitbhub-C\\Compiled\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\adria\\AppData\\Roaming\\NuGet\\NuGet.Config"

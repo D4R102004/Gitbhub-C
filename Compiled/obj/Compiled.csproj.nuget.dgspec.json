@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Compiler\\Compiled\\Compiled.csproj": {}
+    "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj": {}
   },
   "projects": {
-    "c:\\Compiler\\Compiled\\Compiled.csproj": {
+    "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Compiler\\Compiled\\Compiled.csproj",
+        "projectUniqueName": "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
         "projectName": "Compiled",
-        "projectPath": "c:\\Compiler\\Compiled\\Compiled.csproj",
+        "projectPath": "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
         "packagesPath": "C:\\Users\\adria\\.nuget\\packages\\",
-        "outputPath": "c:\\Compiler\\Compiled\\obj\\",
+        "outputPath": "c:\\Compiler\\Gitbhub-C\\Compiled\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\adria\\AppData\\Roaming\\NuGet\\NuGet.Config"
