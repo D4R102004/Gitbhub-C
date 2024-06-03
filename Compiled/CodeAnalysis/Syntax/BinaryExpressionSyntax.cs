@@ -1,4 +1,4 @@
-namespace Dar.CodeAnalysis
+namespace Dar.CodeAnalysis.Syntax
 {
     public sealed class BinaryExpressionSyntax : ExpressionSyntax
 {
@@ -18,6 +18,5 @@ namespace Dar.CodeAnalysis
         yield return OperatorToken;
         yield return Right;
     }
-
 }
 }

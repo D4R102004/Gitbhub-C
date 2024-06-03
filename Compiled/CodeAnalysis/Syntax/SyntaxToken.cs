@@ -1,4 +1,4 @@
-namespace Dar.CodeAnalysis
+namespace Dar.CodeAnalysis.Syntax
 {
 public sealed class SyntaxToken : SyntaxNode
 {

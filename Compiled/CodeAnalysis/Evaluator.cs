@@ -1,6 +1,6 @@
 namespace Dar.CodeAnalysis
 {
-    class Evaluator
+    public sealed class Evaluator
 {
     private readonly ExpressionSyntax _root;
     public Evaluator(ExpressionSyntax root)
@@ -18,6 +18,13 @@ namespace Dar.CodeAnalysis
         if (node is LiteralExpressionSyntax n)
         {
             return (int) n.LiteralToken.Value;
+        }
+        if (node is UnaryExpressionSyntax u)
+        {
+            var operand = EvaluateExpression(u.Operand);
+            if (u.OperatorToken.Kind == SyntaxKind.PlusToken) return operand;
+            else if (u.OperatorToken.Kind == SyntaxKind.MinusToken) return -operand;
+            throw new Exception($"Unexpected unary operator {u.OperatorToken.Kind}");
         }
         if (node is BinaryExpressionSyntax b)
         {

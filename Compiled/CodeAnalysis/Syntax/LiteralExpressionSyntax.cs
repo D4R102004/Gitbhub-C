@@ -1,8 +1,8 @@
-namespace Dar.CodeAnalysis
+namespace Dar.CodeAnalysis.Syntax
 {
-    sealed class LiteralExpressionSyntax : ExpressionSyntax
+    public sealed class LiteralExpressionSyntax : ExpressionSyntax
 {
-    public override SyntaxKind Kind => SyntaxKind.NumberExpression;
+    public override SyntaxKind Kind => SyntaxKind.LiteralExpression;
     public SyntaxToken LiteralToken {get;}
     public LiteralExpressionSyntax(SyntaxToken literalToken)
     {
@@ -13,5 +13,4 @@ namespace Dar.CodeAnalysis
         yield return LiteralToken;
     }
 }
-    
 }

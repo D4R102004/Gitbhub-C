@@ -1,4 +1,4 @@
-namespace Dar.CodeAnalysis
+namespace Dar.CodeAnalysis.Syntax
 {
 public enum SyntaxKind 
 {
@@ -14,9 +14,11 @@ public enum SyntaxKind
     OpenParenthesisToken, 
     CloseParenthesisToken, 
     //Expressions
-    NumberExpression,
+    LiteralExpression,
+    UnaryExpression,
     BinaryExpression, 
-    ParenthesizedExpression
-}
+    ParenthesizedExpression,
+    
+    }
     
 }
