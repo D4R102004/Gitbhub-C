@@ -13,12 +13,18 @@ public enum SyntaxKind
     SlashToken, 
     OpenParenthesisToken, 
     CloseParenthesisToken, 
+    IdentifierToken,
+    //Keywords
+    
+    FalseKeyword,
+    TrueKeyword,
+
     //Expressions
     LiteralExpression,
     UnaryExpression,
     BinaryExpression, 
     ParenthesizedExpression,
-    
+        
     }
     
 }
