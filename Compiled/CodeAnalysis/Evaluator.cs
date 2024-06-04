@@ -24,7 +24,7 @@ namespace Dar.CodeAnalysis
         if (node is BoundUnaryExpression u)
         {
             var operand = EvaluateExpression(u.Operand);
-                switch (u.OperatorKind)
+                switch (u.Op.Kind)
                 {
                     case BoundUnaryOperatorKind.Identity:
                         return (int)operand;
@@ -33,14 +33,14 @@ namespace Dar.CodeAnalysis
                         case BoundUnaryOperatorKind.LogicalNegation:
                         return !(bool)operand;
                 
-                default : throw new Exception($"Unexpected unary operator {u.OperatorKind}");
+                default : throw new Exception($"Unexpected unary operator {u.Op}");
                 }
         }
         if (node is BoundBinaryExpression b)
         {
             var left =  EvaluateExpression(b.Left);
             var right = EvaluateExpression(b.Right);
-                switch (b.OperatorKind)
+                switch (b.Op.Kind)
                 {
                     case BoundBinaryOperatorKind.Addition:
                         return (int)left + (int)right;
@@ -54,8 +54,12 @@ namespace Dar.CodeAnalysis
                         return (bool)left && (bool)right;
                         case BoundBinaryOperatorKind.LogicalOr:
                         return (bool)left || (bool)right;
+                        case BoundBinaryOperatorKind.Equals:
+                        return Equals(left, right);
+                        case BoundBinaryOperatorKind.NotEquals:
+                        return !Equals(left, right);
                     default:
-                        throw new Exception($"Unexpected binary operator {b.OperatorKind}");
+                        throw new Exception($"Unexpected binary operator {b.Op}");
                 }
             }
         throw new Exception($"Unexpected node {node.Kind}");

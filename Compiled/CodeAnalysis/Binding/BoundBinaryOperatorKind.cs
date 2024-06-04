@@ -7,6 +7,8 @@ namespace Dar.CodeAnalysis.Binding
         Multiplication,
         Division,
         LogicalAnd,
-        LogicalOr
+        LogicalOr,
+        Equals,
+        NotEquals
     }
 }

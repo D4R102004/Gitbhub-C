@@ -2,14 +2,14 @@ namespace Dar.CodeAnalysis.Binding
 {
     internal sealed class BoundUnaryExpression : BoundExpression
     {
-        public override Type Type => Operand.Type;
+        public override Type Type => Op.Type;
         public override BoundNodeKind Kind => BoundNodeKind.UnaryExpression;
-        public BoundUnaryOperatorKind OperatorKind { get;}
+        public BoundUnaryOperator Op { get;}
         public BoundExpression Operand { get; }
-        public BoundUnaryExpression(BoundUnaryOperatorKind operatorKind, BoundExpression operand)
+        public BoundUnaryExpression(BoundUnaryOperator op, BoundExpression operand)
         {
             this.Operand = operand;
-            this.OperatorKind = operatorKind;
+            this.Op = op;
         }        
     }
 }
