@@ -1,4 +1,6 @@
 ﻿using System.Drawing;
+using Dar.CodeAnalysis.Syntax;
+using Dar.CodeAnalysis.Binding;
 namespace Dar.CodeAnalysis
 {
 internal static class Program
@@ -24,31 +26,27 @@ internal static class Program
                 continue;
             }
             var syntaxTree = SyntaxTree.Parse(line);
+            var binder = new Binder();
+            var boundExpression = binder.BindExpression(syntaxTree.Root);
+            var diagnostics = syntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
             if (showTree)
             {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             PrettyPrint(syntaxTree.Root);
             Console.ResetColor();
             }
-            /*var lexer = new Lexer(line);
-            while (true)
+
+                
+                if (!diagnostics.Any())
             {
-                var token = lexer.NextToken();
-                if (token.Kind == SyntaxKind.EndOfFileToken) break;
-                System.Console.Write($"{token.Kind} : '{token.Text}'");
-                if (token.Value != null) System.Console.Write($" {token.Value}");
-                System.Console.WriteLine(); 
-            }*/
-            if (!syntaxTree.Diagnostics.Any())
-            {
-                var e = new Evaluator(syntaxTree.Root);
+                var e = new Evaluator(boundExpression);
                 var result = e.Evaluate();
                 System.Console.WriteLine(result);
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                foreach (var diagnostic in syntaxTree.Diagnostics) System.Console.WriteLine(diagnostic);
+                foreach (var diagnostic in diagnostics) System.Console.WriteLine(diagnostic);
                 Console.ResetColor();
             }
         }
