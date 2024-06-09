@@ -1,5 +1,4 @@
 using Dar.CodeAnalysis.Binding;
-using Dar.CodeAnalysis.Syntax;
 namespace Dar.CodeAnalysis
 {
     internal sealed class Evaluator

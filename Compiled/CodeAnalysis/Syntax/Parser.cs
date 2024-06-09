@@ -12,7 +12,7 @@ internal sealed class Parser
     //    / \
     //   3   3
     private readonly SyntaxToken[] _tokens;
-    private List<string> _diagnostics = new List<string>();
+    private DiagnosticBag _diagnostics = new DiagnosticBag();
     private int _position;
 
     public Parser(string text)
@@ -31,7 +31,7 @@ internal sealed class Parser
         this._tokens = tokens.ToArray();
         this._diagnostics.AddRange(lexer.Diagnostics);
     }
-    public IEnumerable<string> Diagnostics => _diagnostics;
+    public DiagnosticBag Diagnostics => _diagnostics;
     private SyntaxToken Peek(int offset)
     {
         var index = _position + offset;
@@ -42,13 +42,16 @@ internal sealed class Parser
     private SyntaxToken NextToken()
     {
         var current = Current;
-        _position++;
-        return current;
+        if (_position + 1 < _tokens.Length)
+        {
+            _position++;
+        }
+        return current?? throw new InvalidOperationException("Expected a token.");
     }
     private SyntaxToken MatchToken(SyntaxKind kind)
     {
         if (Current.Kind == kind) return NextToken();
-        _diagnostics.Add($"ERROR: Unexpected token <{Current.Kind}>, expected <{kind}>");
+        _diagnostics.ReportUnexpectedToken(Current.Span, Current.Kind, kind);
         return new SyntaxToken(kind, Current.Position, null, null);
     }
     public SyntaxTree Parse()
@@ -97,11 +100,11 @@ internal sealed class Parser
 
                 case SyntaxKind.TrueKeyword:
                 case SyntaxKind.FalseKeyword:
-                    {
-                        var keywordToken = NextToken();
-                        var value = keywordToken.Kind == SyntaxKind.TrueKeyword;
-                        return new LiteralExpressionSyntax(keywordToken, value);
-                    }
+                {
+                    var keywordToken = NextToken();
+                    var value = keywordToken.Kind == SyntaxKind.TrueKeyword;
+                    return new LiteralExpressionSyntax(keywordToken, value);
+                }
             default :
             {
                 var numberToken = MatchToken(SyntaxKind.NumberToken);
