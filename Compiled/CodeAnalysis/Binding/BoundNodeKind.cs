@@ -1,7 +1,13 @@
 namespace Dar.CodeAnalysis.Binding
 {
-    internal enum BoundNodeKind {
+    internal enum BoundNodeKind 
+    {
+        LiteralExpression,
+        VariableExpression,
         UnaryExpression,
-        LiteralExpression
+        BinaryExpression,
+        
+        AssignmentExpression,
+        
     }
 }

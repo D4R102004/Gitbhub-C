@@ -12,4 +12,5 @@ namespace Dar.CodeAnalysis
         public int Length { get; }
         public int End => Start + Length;
     }
+
 }

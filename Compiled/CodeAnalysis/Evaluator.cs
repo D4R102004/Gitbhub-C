@@ -4,9 +4,12 @@ namespace Dar.CodeAnalysis
     internal sealed class Evaluator
 {
     private readonly BoundExpression _root;
-    public Evaluator(BoundExpression root)
+        private readonly Dictionary<VariableSymbol, object> _variables;
+
+        public Evaluator(BoundExpression root, Dictionary<VariableSymbol, object> variables)
     {
         this._root = root;
+        this._variables = variables;
     }
     public object Evaluate()
     {
@@ -14,11 +17,19 @@ namespace Dar.CodeAnalysis
     }
     private object EvaluateExpression(BoundExpression node)
     {
-        //BinaryExpression 
-        //NumberExpression
         if (node is BoundLiteralExpression n)
         {
             return n.Value;
+        }
+        if (node is BoundVariableExpression v)
+        {
+            return _variables[v.Variable];
+        }
+        if (node is BoundAssignmentExpression a)
+        {
+            var value = EvaluateExpression(a.Expression);
+            _variables[a.Variable] = value;
+            return value;
         }
         if (node is BoundUnaryExpression u)
         {
