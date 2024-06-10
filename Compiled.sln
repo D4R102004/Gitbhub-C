@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiled", "Compiled\Compiled.csproj", "{3784EEB5-7FBB-492A-92B8-DD80D1577804}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dar.Tests", "Dar.Tests\Dar.Tests.csproj", "{95CAB32A-F06E-472F-8482-6D0C8F9980FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{3784EEB5-7FBB-492A-92B8-DD80D1577804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3784EEB5-7FBB-492A-92B8-DD80D1577804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3784EEB5-7FBB-492A-92B8-DD80D1577804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95CAB32A-F06E-472F-8482-6D0C8F9980FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95CAB32A-F06E-472F-8482-6D0C8F9980FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95CAB32A-F06E-472F-8482-6D0C8F9980FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95CAB32A-F06E-472F-8482-6D0C8F9980FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

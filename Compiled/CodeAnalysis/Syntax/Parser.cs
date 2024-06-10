@@ -66,8 +66,7 @@ namespace Dar.CodeAnalysis.Syntax
             return ParseAssignmentExpresion();
         }
         private ExpressionSyntax ParseAssignmentExpresion()
-        {
-            
+        { 
             if (Peek(0).Kind == SyntaxKind.IdentifierToken &&
             Peek(1).Kind == SyntaxKind.EqualsToken)
             {
