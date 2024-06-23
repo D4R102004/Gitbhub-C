@@ -38,9 +38,6 @@ namespace Dar.CodeAnalysis.Binding
                 default: throw new Exception($"Unexpected syntax {syntax.Kind}");
             }
         }
-
-        
-
         private BoundExpression BindParenthesizedExpression(ParenthesizedExpressionSyntax syntax)
         {
             return BindExpression(syntax.Expression);

@@ -12,23 +12,19 @@ internal  class Lexer
     public DiagnosticBag Diagnostics => _diagnostics;
     private char Current => Peek(0);
     private char LookAhead => Peek(1);
-        private char Peek(int offset)
-        {
-            var index = _position + offset;
-            if (index >= _text.Length) return '\0';
-            return _text[index];
-        }
+    private char Peek(int offset)
+    {
+        var index = _position + offset;
+        if (index >= _text.Length) return '\0';
+        return _text[index];
+    }
 
-        private void Next()
+    private void Next()
     {
         _position++;
     }
     public SyntaxToken Lex()
     {
-        /* <numbers>
-        // + - * / ( )
-
-        // <whitespace>*/
         if (_position >= _text.Length) return new SyntaxToken(SyntaxKind.EndOfFileToken, _position, "\0", null);
         
         var start = _position;
@@ -53,9 +49,6 @@ internal  class Lexer
             var text = _text.Substring(start, length);
             return new SyntaxToken(SyntaxKind.WhiteSpaceToken, start, text, null);
         }
-
-        //true 
-        //false
         if (char.IsLetter(Current))
         {
             while (char.IsLetter(Current)) Next();
