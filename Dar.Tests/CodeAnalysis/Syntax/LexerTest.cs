@@ -1,7 +1,6 @@
 using Dar.CodeAnalysis.Syntax;
 
 namespace Dar.Tests.CodeAnalysis.Syntax;
-
 public class LexerTest
 {
     [Theory]
