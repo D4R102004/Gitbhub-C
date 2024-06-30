@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dar.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d3e3f61aba09724ca594253a4a562731dfb6714")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15fe7dab0cb59e54be05637f7312c9c3b9deef8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dar.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dar.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
