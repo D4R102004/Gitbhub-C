@@ -20,6 +20,7 @@ public enum SyntaxKind
     OpenParenthesisToken, 
     CloseParenthesisToken, 
     IdentifierToken,
+    CommaToken,
     //Keywords
     
     FalseKeyword,
