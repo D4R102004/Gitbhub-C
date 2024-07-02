@@ -5,30 +5,30 @@ namespace Dar.CodeAnalysis.Binding
     internal sealed class BoundBinaryOperator
     {
         public BoundBinaryOperatorKind Kind;
-        private BoundBinaryOperator(SyntaxKind syntaxKind, BoundBinaryOperatorKind kind, Type operandType, Type Type) 
-        : this(syntaxKind, kind, operandType, operandType, Type)
+        private BoundBinaryOperator(SyntaxKind syntaxKind, BoundBinaryOperatorKind kind, Type operandType, Type resultType) 
+        : this(syntaxKind, kind, operandType, operandType, resultType)
         {
 
         }
-        private BoundBinaryOperator(SyntaxKind syntaxKind, BoundBinaryOperatorKind kind, Type type) 
-        : this(syntaxKind, kind, type, type, type)
+        private BoundBinaryOperator(SyntaxKind syntaxKind, BoundBinaryOperatorKind kind, Type resultType) 
+        : this(syntaxKind, kind, resultType, resultType, resultType)
         {
 
         }
-        private BoundBinaryOperator(SyntaxKind syntaxKind, BoundBinaryOperatorKind kind, Type leftType, Type rightype, Type type)
+        private BoundBinaryOperator(SyntaxKind syntaxKind, BoundBinaryOperatorKind kind, Type leftType, Type righType, Type resultType)
         {
             SyntaxKind = syntaxKind;
             Kind = kind;
             LeftType = leftType;
-            Rightype = rightype;
-            Type = type;
+            RighType = righType;
+            ResultType = resultType;
         }
 
         public SyntaxKind SyntaxKind { get; }
         public Type LeftType { get; }
-        public Type Rightype { get; }
+        public Type RighType { get; }
         public Type OperandType { get; }
-        public Type Type { get; }
+        public Type ResultType { get; }
         private static BoundBinaryOperator[] _operators =
         {
             new BoundBinaryOperator(SyntaxKind.PlusToken, BoundBinaryOperatorKind.Addition, typeof(int)),
@@ -47,7 +47,7 @@ namespace Dar.CodeAnalysis.Binding
         {
             foreach (var op in _operators)
             {
-                if (op.SyntaxKind == syntaxKind && op.LeftType == leftType && op.Rightype == rightType) 
+                if (op.SyntaxKind == syntaxKind && op.LeftType == leftType && op.RighType == rightType) 
                 return op;
             }
             return null;
