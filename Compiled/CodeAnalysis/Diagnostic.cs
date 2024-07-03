@@ -1,3 +1,5 @@
+using Dar.CodeAnalysis.Text;
+
 namespace Dar.CodeAnalysis
 {
     public sealed class Diagnostic

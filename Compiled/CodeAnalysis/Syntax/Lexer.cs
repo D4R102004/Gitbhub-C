@@ -1,15 +1,17 @@
+using Dar.CodeAnalysis.Text;
+
 namespace Dar.CodeAnalysis.Syntax
 {
 internal  class Lexer
 {
     private readonly DiagnosticBag _diagnostics = new DiagnosticBag();
-    private readonly string _text;
+    private readonly SourceText _text;
     private int _position;
     private int _start;
     private SyntaxKind _kind;
     private object _value;
     
-    public Lexer(string text)
+    public Lexer(SourceText text)
     {
        this._text = text;
     }
@@ -158,7 +160,7 @@ internal  class Lexer
         var text = SyntaxFacts.GetText(_kind);
         if (text == null)
         {
-            text = _text.Substring(_start, length);
+            text = _text.ToString(_start, length);
         }
         return new SyntaxToken(_kind, _start, text, _value);
     
@@ -176,7 +178,7 @@ internal  class Lexer
             while (char.IsDigit(Current)) 
                 _position++;
             var length = _position - _start;
-            var text = _text.Substring(_start, length);
+            var text = _text.ToString(_start, length);
             if (!int.TryParse(text, out var value))
             {
                 _diagnostics.ReportInvalidNumber(new TextSpan(_start, length), text, typeof(int));
@@ -191,7 +193,7 @@ internal  class Lexer
             while (char.IsLetter(Current)) 
                 _position++;
             var length = _position - _start;
-            var text = _text.Substring(_start, length);
+            var text = _text.ToString(_start, length);
             _kind = SyntaxFacts.GetKeywordKind(text);
         }
         private void ReadString()
@@ -200,7 +202,7 @@ internal  class Lexer
             while (Current != '"') 
                 _position++;
             var length = _position - _start;
-            var text = _text.Substring(_start + 1, length - 1);
+            var text = _text.ToString(_start + 1, length - 1);
 
         }
     }

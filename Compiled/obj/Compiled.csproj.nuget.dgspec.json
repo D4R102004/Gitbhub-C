@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj": {}
+    "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj": {}
   },
   "projects": {
-    "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj": {
+    "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
+        "projectUniqueName": "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
         "projectName": "Compiled",
-        "projectPath": "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
+        "projectPath": "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
         "packagesPath": "C:\\Users\\adria\\.nuget\\packages\\",
-        "outputPath": "C:\\Compiler\\Gitbhub-C\\Compiled\\obj\\",
+        "outputPath": "c:\\Compiler\\Gitbhub-C\\Compiled\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\adria\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Collections.Immutable": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

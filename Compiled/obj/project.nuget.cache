@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "VTWGzUFvJK2wANrJg3eaLp5zWKv3JiFCBX7cuvdXmwZMgndilYz7OU2oygRmFBJmtm2fEE3NKm3JizA9ccl6fw==",
+  "dgSpecHash": "25cuMIUZZVHGj5CKkf8+DPrBcNrJ7NCCYynuYrLmdkbYskyxNgNg6qAoFucOxSulQcdn7sAXpI+kpeiaYw2ZgA==",
   "success": true,
-  "projectFilePath": "C:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "c:\\Compiler\\Gitbhub-C\\Compiled\\Compiled.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adria\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

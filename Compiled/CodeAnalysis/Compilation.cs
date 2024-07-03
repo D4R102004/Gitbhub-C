@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Dar.CodeAnalysis.Binding;
 using Dar.CodeAnalysis.Syntax;
 namespace Dar.CodeAnalysis
@@ -13,14 +14,14 @@ namespace Dar.CodeAnalysis
         {
             var binder = new Binder(variables);
             var boundExpression = binder.BindExpression(SyntaxTree.Root);
-            var diagnostics = SyntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
+            var diagnostics = SyntaxTree.Diagnostics.Concat(binder.Diagnostics).ToImmutableArray();
             if (diagnostics.Any())
             {
                 return new EvaluationResult(diagnostics, null);
             }
             var evaluator = new Evaluator(boundExpression, variables);
             var value = evaluator.Evaluate();
-            return new EvaluationResult(Array.Empty<Diagnostic>(), value);
+            return new EvaluationResult(ImmutableArray<Diagnostic>.Empty, value);
 
         }
     }

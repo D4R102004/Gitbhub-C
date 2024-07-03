@@ -1,5 +1,6 @@
 using System.Collections;
 using Dar.CodeAnalysis.Syntax;
+using Dar.CodeAnalysis.Text;
 using Dar.Syntax;
 
 namespace Dar.CodeAnalysis

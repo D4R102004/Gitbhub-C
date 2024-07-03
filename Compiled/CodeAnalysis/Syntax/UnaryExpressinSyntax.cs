@@ -15,10 +15,6 @@ namespace Dar.CodeAnalysis.Syntax
         this.OperatorToken = operatorToken;
         this.Operand = operand;
     }
-    public override IEnumerable<SyntaxNode> GetChildren()
-    {
-        yield return OperatorToken;
-        yield return Operand;
-    }
+
 }
 }

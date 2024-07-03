@@ -14,9 +14,5 @@ namespace Dar.CodeAnalysis.Syntax
         this.LiteralToken = literalToken;
             Value = value;
     }
-    public override IEnumerable<SyntaxNode> GetChildren()
-    {
-        yield return LiteralToken;
-    }
 }
 }

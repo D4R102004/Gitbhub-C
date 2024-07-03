@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2MYZRQMqy9grtfCJrJIbs+VlJlbY0yGTCZGsqVKFOqk8Dqk4jEGDhZCjAnt3UfsJI5F0Zfkpr8zjv5RgeUF96g==",
+  "dgSpecHash": "RSfQ0bnNK5dQQK011VieiRLqoKmv/ZOzdtReSx8i9WI7+wKwRySldjGsGnK3nDXCQnf/jB+mq9t6cDslIPtQRA==",
   "success": true,
   "projectFilePath": "C:\\Compiler\\Gitbhub-C\\Dar.Tests\\Dar.Tests.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\adria\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\adria\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\adria\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
+    "C:\\Users\\adria\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
     "C:\\Users\\adria\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\adria\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\adria\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.3.0\\system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
