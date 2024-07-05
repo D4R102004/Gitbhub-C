@@ -79,21 +79,17 @@ internal  class Lexer
             {
                 if (LookAhead == '&') 
                 {
-                    
                     _kind = SyntaxKind.AmpersandAmpersandToken;
                     _position += 2;
-                    break;
                 }
                 break;
             }
             case '|':
             {
                 if (LookAhead == '|')
-                {
-                        
+                {   
                     _kind = SyntaxKind.PipePipeToken;
                     _position += 2;
-                    break;
                 }
                 break;
             }
@@ -129,9 +125,11 @@ internal  class Lexer
             case '5': case '6': case '7': case '8': case '9':
                 ReadNumberToken();
                 break;
+            
             case ' ': case '\t': case '\n': case '\r':
                 ReadWhiteSpace();
                 break;
+            
             default:
             {
                 

@@ -2,7 +2,7 @@ namespace Dar.CodeAnalysis.Syntax
 {
 public enum SyntaxKind 
 {
-    //Tokens
+    // Tokens
     BadToken,
     EndOfFileToken,
     WhiteSpaceToken,
@@ -25,14 +25,18 @@ public enum SyntaxKind
     FalseKeyword,
     TrueKeyword,
 
-    //Expressions
+
+    // Nodes
+    CompilationUnit,
+
+    // Expressions
     LiteralExpression,
     NameExpression,
     UnaryExpression,
     BinaryExpression, 
     ParenthesizedExpression,
         AssignmentExpression,
-        
+    
     }
     
 }

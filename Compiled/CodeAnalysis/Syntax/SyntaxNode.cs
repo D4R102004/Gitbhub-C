@@ -33,7 +33,6 @@ public abstract class SyntaxNode
                 foreach (var child in children)
                     yield return child;
             }
-
         }
     }
     public void WriteTo(TextWriter writer)
@@ -45,16 +44,31 @@ public abstract class SyntaxNode
         // └──
         // ├──
         // │
+        var isToConsole = writer == Console.Out;
+
         var marker = isLast ? "└──" : "├──";
         
         writer.Write(indent);
+
+        if (isToConsole)
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+
         writer.Write(marker);
+        
+
+        if (isToConsole)
+            Console.ForegroundColor = node is SyntaxToken ? ConsoleColor.Blue : ConsoleColor.Cyan;
+        
         writer.Write(node.Kind);
         if (node is SyntaxToken t && t.Value != null)
         {
             System.Console.Write(" ");
             Console.Write(t.Value);
         }
+
+        if (isToConsole)
+            Console.ResetColor();
+        
         writer.WriteLine();
         indent += isLast ? "   " : "│   ";
         var lastChild = node.GetChildren().LastOrDefault();

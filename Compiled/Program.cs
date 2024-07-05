@@ -18,12 +18,16 @@ internal static class Program
         var showTree = false;
         var variables = new Dictionary<VariableSymbol, object>();
         var textBuilder = new StringBuilder();
+        Compilation previous = null;
         while (true)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             if (textBuilder.Length == 0)
-                System.Console.Write("> ");
+                System.Console.Write("» ");
             else
-                System.Console.WriteLine("| ");
+                System.Console.WriteLine("· ");
+
+            Console.ResetColor();
             
             var input = Console.ReadLine();
 
@@ -48,6 +52,12 @@ internal static class Program
                     Console.Clear();
                     continue;
                 }
+                else if (input == "#reset")
+                {
+                    previous = null;
+                    continue;
+                }
+
             }
             textBuilder.AppendLine(input);
             var text = textBuilder.ToString();
@@ -56,21 +66,29 @@ internal static class Program
             if (!isBlank && syntaxTree.Diagnostics.Any())
                 continue;
             
-            var compilation = new Compilation(syntaxTree);
+            var compilation = previous == null 
+                                ? new Compilation(syntaxTree)
+                                : previous.ContinueWith(syntaxTree);
+
+
             var result = compilation.Evaluate(variables);
             if (showTree)
             {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            syntaxTree.Root.WriteTo(Console.Out);
-            Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                syntaxTree.Root.WriteTo(Console.Out);
+                Console.ResetColor();
             }                
             if (!result.Diagnostics.Any())
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 System.Console.WriteLine(result.Value);
+                Console.ResetColor();
+
+                previous = compilation;
             }
             else
             {
-                    foreach (var diagnostic in result.Diagnostics) 
+                foreach (var diagnostic in result.Diagnostics) 
                 {
                     var lineIndex = syntaxTree.Text.GetLineIndex(diagnostic.Span.Start);
                     var line = syntaxTree.Text.Lines[lineIndex];
@@ -97,7 +115,8 @@ internal static class Program
                     System.Console.Write(error);
                     Console.ResetColor();
                     
-                    System.Console.WriteLine();
+                    System.Console.WriteLine(suffix);
+                    
                 }
                 System.Console.WriteLine();
             }

@@ -36,10 +36,13 @@ namespace Dar.CodeAnalysis.Syntax
                 return 3;
 
             case SyntaxKind.AmpersandAmpersandToken:
-            return 2;
+                return 2;
+
             case SyntaxKind.PipePipeToken:
                 return 1;
-            default : return 0;
+
+            default : 
+                return 0;
         }
     }
 
@@ -48,10 +51,13 @@ namespace Dar.CodeAnalysis.Syntax
             switch (text)
             {
                 case "true":
-                return SyntaxKind.TrueKeyword;
+                    return SyntaxKind.TrueKeyword;
+
                 case "false":
-                return SyntaxKind.FalseKeyword;
-                default: return SyntaxKind.IdentifierToken;
+                    return SyntaxKind.FalseKeyword;
+
+                default: 
+                    return SyntaxKind.IdentifierToken;
             }
         }
 
@@ -61,9 +67,7 @@ namespace Dar.CodeAnalysis.Syntax
             foreach (var kind in kinds)
             {
                 if (GetUnaryOperatorPrecedence(kind) > 0)
-                {
                     yield return kind;
-                }
             }
         }
 
@@ -78,9 +82,6 @@ namespace Dar.CodeAnalysis.Syntax
                 }
             }
         }
-
-        
-
         public static string GetText(SyntaxKind kind)
         {
             switch (kind)
