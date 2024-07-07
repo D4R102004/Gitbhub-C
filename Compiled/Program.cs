@@ -25,7 +25,7 @@ internal static class Program
             if (textBuilder.Length == 0)
                 System.Console.Write("» ");
             else
-                System.Console.WriteLine("· ");
+                System.Console.Write("· ");
 
             Console.ResetColor();
             

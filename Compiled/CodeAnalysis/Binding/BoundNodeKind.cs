@@ -4,15 +4,18 @@ namespace Dar.CodeAnalysis.Binding
     {
         // Statements
         BlockStatement,
+        VariableDeclaration,
         ExpressionStatement,
+
 
         // Expressions
         LiteralExpression,
         VariableExpression,
+        AssignmentExpression,
         UnaryExpression,
         BinaryExpression,
         
-        AssignmentExpression,
         
+
     }
 }

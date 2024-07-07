@@ -22,18 +22,22 @@ namespace Dar.CodeAnalysis.Syntax
         OpenBraceToken,
         CloseBraceToken,
         IdentifierToken,
+        
         //Keywords
         
         FalseKeyword,
         TrueKeyword,
-
+        LetKeyword,
+        VarKeyword,
 
         // Nodes
         CompilationUnit,
 
         // Statements
         BlockStatement,
+        VariableDeclaration,
         ExpressionStatement,
+        
 
         // Expressions
         LiteralExpression,
@@ -42,7 +46,7 @@ namespace Dar.CodeAnalysis.Syntax
         BinaryExpression, 
         ParenthesizedExpression,
         AssignmentExpression,
-            
+        
     }
     
 }

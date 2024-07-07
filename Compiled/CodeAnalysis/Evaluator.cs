@@ -1,3 +1,4 @@
+using System.Xml.Schema;
 using Dar.CodeAnalysis.Binding;
 namespace Dar.CodeAnalysis
 {
@@ -27,14 +28,28 @@ namespace Dar.CodeAnalysis
                 EvaluateBlockStatement((BoundBlockStatement)node);
                 break;
             
+            case BoundNodeKind.VariableDeclaration:
+                EvaluateVariableDeclaration((BoundVariableDeclaration)node);
+                break;
+
             case BoundNodeKind.ExpressionStatement:
                 EvaluateExpressionStatement((BoundExpressionStatement)node);
                 break;
+
+            
             default:
                 throw new Exception($"Unexpected node {node.Kind}");
         }
     }
-    private void EvaluateBlockStatement(BoundBlockStatement node)
+
+        private void EvaluateVariableDeclaration(BoundVariableDeclaration node)
+        {
+            var value = EvaluateExpression(node.Initializer);
+            _variables[node.Variable] = value;
+            _lastValue = value;
+        }
+
+        private void EvaluateBlockStatement(BoundBlockStatement node)
     {
         foreach (var statement in node.Statements)
             EvaluateStatement(statement);
