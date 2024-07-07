@@ -32,6 +32,10 @@ namespace Dar.CodeAnalysis
                 EvaluateVariableDeclaration((BoundVariableDeclaration)node);
                 break;
 
+            case BoundNodeKind.IfStatement:
+                EvaluateIfStatement((BoundIfStatement)node);
+                break;
+
             case BoundNodeKind.ExpressionStatement:
                 EvaluateExpressionStatement((BoundExpressionStatement)node);
                 break;
@@ -41,6 +45,8 @@ namespace Dar.CodeAnalysis
                 throw new Exception($"Unexpected node {node.Kind}");
         }
     }
+
+        
 
         private void EvaluateVariableDeclaration(BoundVariableDeclaration node)
         {
@@ -53,6 +59,15 @@ namespace Dar.CodeAnalysis
     {
         foreach (var statement in node.Statements)
             EvaluateStatement(statement);
+    }
+
+    private void EvaluateIfStatement(BoundIfStatement node)
+    {
+        var condition = (bool)EvaluateExpression(node.Condition);
+        if (condition)
+            EvaluateStatement(node.ThenStatement);
+        else if (node.ElseStatement != null)
+            EvaluateStatement(node.ElseStatement);
     }
 
 
@@ -134,6 +149,14 @@ namespace Dar.CodeAnalysis
                     return Equals(left, right);
                 case BoundBinaryOperatorKind.NotEquals:
                     return !Equals(left, right);
+                case BoundBinaryOperatorKind.Less:
+                    return (int)left < (int)right;
+                case BoundBinaryOperatorKind.LessOrEquals:
+                    return (int)left <= (int)right;
+                case BoundBinaryOperatorKind.Greater:
+                    return (int)left > (int)right;
+                case BoundBinaryOperatorKind.GreaterOrEquals:
+                    return (int)left >= (int)right;
                 default:
                     throw new Exception($"Unexpected binary operator {b.Op}");
             }

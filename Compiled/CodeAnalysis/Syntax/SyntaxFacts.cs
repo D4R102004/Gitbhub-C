@@ -33,6 +33,10 @@ namespace Dar.CodeAnalysis.Syntax
 
             case SyntaxKind.EqualsEqualsToken:
             case SyntaxKind.BangEqualsToken:
+            case SyntaxKind.LessToken:
+            case SyntaxKind.LessOrEqualsToken:
+            case SyntaxKind.GreaterToken:
+            case SyntaxKind.GreaterOrEqualsToken:
                 return 3;
 
             case SyntaxKind.AmpersandAmpersandToken:
@@ -50,8 +54,13 @@ namespace Dar.CodeAnalysis.Syntax
         {
             switch (text)
             {
+                case "else":
+                    return SyntaxKind.ElseKeyword;
                 case "false":
                     return SyntaxKind.FalseKeyword;
+
+                case "if":
+                    return SyntaxKind.IfKeyword;
 
                 case "let":
                     return SyntaxKind.LetKeyword;
@@ -104,6 +113,14 @@ namespace Dar.CodeAnalysis.Syntax
                     return "!";
                 case SyntaxKind.EqualsToken:
                     return "=";
+                case SyntaxKind.LessToken:
+                    return "<";
+                case SyntaxKind.LessOrEqualsToken:
+                    return "<=";
+                case SyntaxKind.GreaterToken:
+                    return ">";
+                case SyntaxKind.GreaterOrEqualsToken:
+                    return ">=";
                 case SyntaxKind.AmpersandAmpersandToken:
                    return "&&";
                 case SyntaxKind.PipePipeToken:
@@ -119,9 +136,13 @@ namespace Dar.CodeAnalysis.Syntax
                 case SyntaxKind.OpenBraceToken:
                     return "{"; 
                 case SyntaxKind.CloseBraceToken:
-                    return  "}"; 
+                    return  "}";
+                 case SyntaxKind.ElseKeyword:
+                    return "else";
                 case SyntaxKind.FalseKeyword:
                     return "false";
+                case SyntaxKind.IfKeyword:
+                    return "if";
                 case SyntaxKind.LetKeyword:
                     return "let";
                 case SyntaxKind.TrueKeyword:

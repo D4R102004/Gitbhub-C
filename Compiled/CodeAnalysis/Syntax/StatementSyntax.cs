@@ -4,5 +4,4 @@ namespace Dar.CodeAnalysis.Syntax
     {
 
     }
-
 }

@@ -5,6 +5,7 @@ namespace Dar.CodeAnalysis.Binding
         // Statements
         BlockStatement,
         VariableDeclaration,
+        IfStatement,
         ExpressionStatement,
 
 
@@ -15,7 +16,5 @@ namespace Dar.CodeAnalysis.Binding
         UnaryExpression,
         BinaryExpression,
         
-        
-
     }
 }

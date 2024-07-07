@@ -17,6 +17,10 @@ namespace Dar.CodeAnalysis.Syntax
         PipePipeToken,
         EqualsEqualsToken,
         BangEqualsToken,
+        LessToken,
+        GreaterToken,
+        LessOrEqualsToken,
+        GreaterOrEqualsToken,
         OpenParenthesisToken, 
         CloseParenthesisToken, 
         OpenBraceToken,
@@ -24,18 +28,21 @@ namespace Dar.CodeAnalysis.Syntax
         IdentifierToken,
         
         //Keywords
-        
+        ElseKeyword,
         FalseKeyword,
+        IfKeyword,
         TrueKeyword,
         LetKeyword,
         VarKeyword,
 
         // Nodes
         CompilationUnit,
+        ElseClause,
 
         // Statements
         BlockStatement,
         VariableDeclaration,
+        IfStatement,
         ExpressionStatement,
         
 

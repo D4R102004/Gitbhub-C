@@ -17,7 +17,5 @@ namespace Dar.CodeAnalysis.Binding
 
         public VariableSymbol Variable { get; }
         public BoundExpression Initializer { get; }
-
-        
     }
 }
