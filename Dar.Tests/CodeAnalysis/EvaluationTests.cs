@@ -17,25 +17,18 @@ namespace Dar.Tests.CodeAnalysis
         [InlineData("(10)", 10)]
         [InlineData("12 == 3", false)]
         [InlineData("3 == 3", true)]
-
         [InlineData("12 != 3", true)]
         [InlineData("3 != 3", false)]
-
         [InlineData("false == false", true)]
         [InlineData("true == false", false)]
         [InlineData("false != false", false)]
         [InlineData("true != false", true)]
-        
         [InlineData("true", true)]
         [InlineData("false", false)]
         [InlineData("!true", false)]
         [InlineData("!false", true)]
-
-        [InlineData("(a = 10) * a", 100)]
-
-
-
-        public void SyntaxFact_GetText_RoundTrips(string text, object expectedValue)
+        [InlineData("{ var a = 0 (a = 10) * a }", 100)]
+        public void Evaluator_Computes_CorrectValues(string text, object expectedValue)
         {
             var syntaxTree = SyntaxTree.Parse(text);
             var compilation = new Compilation(syntaxTree);
