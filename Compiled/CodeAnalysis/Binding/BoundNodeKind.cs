@@ -6,6 +6,8 @@ namespace Dar.CodeAnalysis.Binding
         BlockStatement,
         VariableDeclaration,
         IfStatement,
+        WhileStatement,
+        ForStatement,
         ExpressionStatement,
 
 

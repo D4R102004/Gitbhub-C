@@ -30,10 +30,13 @@ namespace Dar.CodeAnalysis.Syntax
         //Keywords
         ElseKeyword,
         FalseKeyword,
+        ForKeyword,
         IfKeyword,
+        ToKeyword,
         TrueKeyword,
         LetKeyword,
         VarKeyword,
+        WhileKeyword,
 
         // Nodes
         CompilationUnit,
@@ -43,7 +46,10 @@ namespace Dar.CodeAnalysis.Syntax
         BlockStatement,
         VariableDeclaration,
         IfStatement,
+        WhileStatement,
+        ForStatement,
         ExpressionStatement,
+
         
 
         // Expressions

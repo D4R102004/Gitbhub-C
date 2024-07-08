@@ -14,8 +14,6 @@ namespace Dar.CodeAnalysis.Syntax
         public SyntaxToken IfKeyword { get; }
         public ExpressionSyntax Condition { get; }
         public StatementSyntax ThenStatement { get; }
-        public ElseClauseSyntax ElseClause { get; }
-
-        
+        public ElseClauseSyntax ElseClause { get; }  
     }
 }

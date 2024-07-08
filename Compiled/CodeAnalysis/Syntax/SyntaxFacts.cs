@@ -56,8 +56,12 @@ namespace Dar.CodeAnalysis.Syntax
             {
                 case "else":
                     return SyntaxKind.ElseKeyword;
+                
                 case "false":
                     return SyntaxKind.FalseKeyword;
+
+                case "for":
+                    return SyntaxKind.ForKeyword;
 
                 case "if":
                     return SyntaxKind.IfKeyword;
@@ -67,9 +71,15 @@ namespace Dar.CodeAnalysis.Syntax
                 
                 case "true":
                     return SyntaxKind.TrueKeyword;
+                
+                case "to":
+                    return SyntaxKind.ToKeyword;
 
                 case "var":
                     return SyntaxKind.VarKeyword;
+                
+                case "while":
+                    return SyntaxKind.WhileKeyword;
 
                 default: 
                     return SyntaxKind.IdentifierToken;
@@ -141,14 +151,20 @@ namespace Dar.CodeAnalysis.Syntax
                     return "else";
                 case SyntaxKind.FalseKeyword:
                     return "false";
+                case SyntaxKind.ForKeyword:
+                    return "for";
                 case SyntaxKind.IfKeyword:
                     return "if";
                 case SyntaxKind.LetKeyword:
                     return "let";
                 case SyntaxKind.TrueKeyword:
                     return "true";
+                case SyntaxKind.ToKeyword:
+                    return "to";
                 case SyntaxKind.VarKeyword:
                     return "var";
+                case SyntaxKind.WhileKeyword:
+                    return "while";
                 default:
                     return null;
             }
