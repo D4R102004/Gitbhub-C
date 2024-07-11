@@ -8,7 +8,11 @@ namespace Dar.CodeAnalysis.Binding
         IfStatement,
         WhileStatement,
         ForStatement,
+        LabelStatement,
+        GoToStatement,
+        ConditionalGoToStatement,
         ExpressionStatement,
+        
 
 
         // Expressions

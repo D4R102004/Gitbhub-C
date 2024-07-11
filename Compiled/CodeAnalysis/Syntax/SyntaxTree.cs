@@ -10,10 +10,9 @@ public sealed class SyntaxTree
     {
         var parser = new Parser(text);
         var root = parser.ParseCompilationUnit();
-        var diagnostics = parser.Diagnostics.ToImmutableArray();
         this.Root = root;
         Text = text;
-        this.Diagnostics = diagnostics;
+        this.Diagnostics = parser.Diagnostics.ToImmutableArray();
     }
 
     public SourceText Text { get; }

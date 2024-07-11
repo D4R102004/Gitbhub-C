@@ -4,6 +4,7 @@ namespace Dar.CodeAnalysis.Binding
     {
         Identity, 
         Negation,
-        LogicalNegation
+        LogicalNegation,
+        OnesComplement
     }
 }

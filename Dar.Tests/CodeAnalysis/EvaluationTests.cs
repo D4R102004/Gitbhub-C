@@ -9,6 +9,9 @@ namespace Dar.Tests.CodeAnalysis
         [Theory]
         [InlineData("1", 1)]
         [InlineData("-1", -1)]
+
+        [InlineData("~1", -2)]
+
         [InlineData("+1", 1)]
         [InlineData("14 + 12", 26)]
         [InlineData("12 - 3", 9)]
@@ -32,14 +35,44 @@ namespace Dar.Tests.CodeAnalysis
         [InlineData("5 >= 4", true)]
         [InlineData("4 >= 5", false)]
 
+        [InlineData("1 | 2", 3)]
+        [InlineData("1 | 0", 1)]
+        [InlineData("1 & 3", 1)]
+        [InlineData("1 & 0", 0)]
+        [InlineData("1 ^ 0", 1)]
+        [InlineData("0 ^ 1", 1)]
+        [InlineData("1 ^ 3", 2)]
+
+
         [InlineData("false == false", true)]
         [InlineData("true == false", false)]
         [InlineData("false != false", false)]
         [InlineData("true != false", true)]
+        [InlineData("true && true", true)]
+        [InlineData("false || false", false)]
+
+        [InlineData("false | false", false)]
+        [InlineData("false | true", true)]
+        [InlineData("true | false", true)]
+        [InlineData("true | true", true)]
+
+        [InlineData("false & false", false)]
+        [InlineData("false & true", false)]
+        [InlineData("true & false", false)]
+        [InlineData("true & true", true)]
+
+        [InlineData("false ^ false", false)]
+        [InlineData("true ^ false", true)]
+        [InlineData("false ^ true", true)]
+        [InlineData("true ^ true", false)]
+
+
         [InlineData("true", true)]
         [InlineData("false", false)]
         [InlineData("!true", false)]
         [InlineData("!false", true)]
+        [InlineData("var a = 10", 10)]
+        [InlineData("{var a = 10 (a * a) }", 100)]
         [InlineData("{ var a = 0 (a = 10) * a }", 100)]
         [InlineData("{ var a = 0 if a == 0 a = 10 a }", 10)]
         [InlineData("{ var a = 0 if a == 4 a = 10 a }", 0)]
@@ -47,6 +80,7 @@ namespace Dar.Tests.CodeAnalysis
         [InlineData("{ var a = 0 if a == 4 a = 10 else a = 5 a }", 5)]
         [InlineData("{ var i = 10 var result = 0 while i > 0 {result = result + i i = i - 1} result }", 55)]
         [InlineData("{ var result = 0 for i = 1 to 10 {result = result + i} result }", 55)]
+        [InlineData("{ var a = 10 for i = 1 to (a = a - 1) { } a }", 9)]
         
         public void Evaluator_Computes_CorrectValues(string text, object expectedValue)
         {

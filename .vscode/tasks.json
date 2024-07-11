@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "shell",
+            "args": ["build", "${workspaceFolder}/YourProject.csproj", "/property:GenerateFullPaths=true"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "start cmd /k \"${workspaceFolder}\\bin\\Debug\\Debug\\Compiled.exe\"",
+            "dependsOn": "build",
+            "problemMatcher": []
+        }
+    ]
+}

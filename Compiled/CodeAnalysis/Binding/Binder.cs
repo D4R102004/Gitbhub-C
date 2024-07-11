@@ -4,7 +4,6 @@ using Dar.CodeAnalysis.Syntax;
 
 namespace Dar.CodeAnalysis.Binding
 {
-
     internal sealed class Binder
     {
         private readonly DiagnosticBag _diagnostics = new DiagnosticBag();
