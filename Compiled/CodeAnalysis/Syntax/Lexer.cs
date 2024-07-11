@@ -1,3 +1,4 @@
+using System.Text;
 using Dar.CodeAnalysis.Text;
 
 namespace Dar.CodeAnalysis.Syntax
@@ -180,6 +181,10 @@ internal  class Lexer
                 }
                 break;
 
+            case '"':
+                ReadString();
+                break;
+
 
             case '0': case '1': case '2': case '3': case '4':
             case '5': case '6': case '7': case '8': case '9':
@@ -201,10 +206,6 @@ internal  class Lexer
                 {
                     ReadWhiteSpace();
                 }
-                else if (Current == '"')
-                {
-                    ReadString();
-                }
                 else
                 {
                     _diagnostics.ReportBadCharacter(_position, Current);
@@ -224,45 +225,85 @@ internal  class Lexer
     
     }
 
-        private void ReadWhiteSpace()
-        {
-            while (char.IsWhiteSpace(Current)) 
-                _position++;
-            _kind = SyntaxKind.WhiteSpaceToken;
-        }
+    private void ReadString()
+    {
+        
 
-        private void ReadNumberToken()
+        //Skip the current quote
+        _position++;
+        var sb = new StringBuilder();
+        var done = false;
+        while (!done)
         {
-            while (char.IsDigit(Current)) 
-                _position++;
-            var length = _position - _start;
-            var text = _text.ToString(_start, length);
-            if (!int.TryParse(text, out var value))
+            switch (Current)
             {
-                _diagnostics.ReportInvalidNumber(new TextSpan(_start, length), text, typeof(int));
+                case '\0':
+                case '\r':
+                case '\n':
+                {
+                    var span = new TextSpan(_start, 1);
+                    _diagnostics.ReportUnterminatedString(span);
+                    done = true;
+                    break;
+                }
+
+                case '"':
+                {
+                    if (LookAhead == '"')
+                    {
+                        sb.Append(Current);
+                        _position += 2;
+                    }
+                    else
+                    {
+                        _position++;
+                        done = true;
+                    }
+                    break;
+                }
+                
+                default:
+                    sb.Append(Current);
+                    _position++;
+                    break;
             }
-
-            _value = value;
-            _kind = SyntaxKind.NumberToken;
-
         }
-        private void ReadIdentifierOrKeyword()
-        {
-            while (char.IsLetter(Current)) 
-                _position++;
-            var length = _position - _start;
-            var text = _text.ToString(_start, length);
-            _kind = SyntaxFacts.GetKeywordKind(text);
-        }
-        private void ReadString()
-        {
+        _kind = SyntaxKind.StringToken;
+        _value = sb.ToString();
+
+    }
+
+    private void ReadWhiteSpace()
+    {
+        while (char.IsWhiteSpace(Current)) 
             _position++;
-            while (Current != '"') 
-                _position++;
-            var length = _position - _start;
-            var text = _text.ToString(_start + 1, length - 1);
+        _kind = SyntaxKind.WhiteSpaceToken;
+    }
 
+    private void ReadNumberToken()
+    {
+        while (char.IsDigit(Current)) 
+            _position++;
+        var length = _position - _start;
+        var text = _text.ToString(_start, length);
+        if (!int.TryParse(text, out var value))
+        {
+            _diagnostics.ReportInvalidNumber(new TextSpan(_start, length), text, typeof(int));
         }
+
+        _value = value;
+        _kind = SyntaxKind.NumberToken;
+
+    }
+    private void ReadIdentifierOrKeyword()
+    {
+        while (char.IsLetter(Current)) 
+            _position++;
+        var length = _position - _start;
+        var text = _text.ToString(_start, length);
+        _kind = SyntaxFacts.GetKeywordKind(text);
+    }
+        
     }
     
 }

@@ -33,7 +33,13 @@ namespace Dar.CodeAnalysis
         public void ReportBadCharacter(int position, char character)
         {
             var span = new TextSpan(position, 1);
-            var message = $"bad character input : '{character}'.";
+            var message = $"Bad character input : '{character}'.";
+            Report(span, message);
+        }
+
+        public void ReportUnterminatedString(TextSpan span)
+        {
+            var message = $"Unterminated string literal.";
             Report(span, message);
         }
 
@@ -79,5 +85,7 @@ namespace Dar.CodeAnalysis
             var message = $"Variable '{name}' is read-only and cannot be assigned to.";
             Report(span, message);
         }
+
+        
     }
 }

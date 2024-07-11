@@ -7,6 +7,7 @@ namespace Dar.CodeAnalysis.Syntax
         EndOfFileToken,
         WhiteSpaceToken,
         NumberToken,
+        StringToken,
         PlusToken, 
         MinusToken, 
         StarToken, 

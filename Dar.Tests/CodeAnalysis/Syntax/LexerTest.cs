@@ -1,8 +1,22 @@
 using Dar.CodeAnalysis.Syntax;
-
+using Dar.CodeAnalysis.Text;
 namespace Dar.Tests.CodeAnalysis.Syntax;
 public class LexerTest
 {
+    [Fact]
+    public void Lexer_Lexes_UnterminatedString()
+    {
+        var text = "\"text";
+        var tokens = SyntaxTree.ParseTokens(text, out var diagnostics);
+        var token = Assert.Single(tokens);
+        Assert.Equal(SyntaxKind.StringToken, token.Kind);
+        Assert.Equal(text, token.Text);
+
+        var diagnostic = Assert.Single(diagnostics);
+        Assert.Equal(new TextSpan(0, 1), diagnostic.Span);
+        Assert.Equal("Unterminated string literal.", diagnostic.Message);
+        
+    }
 
     [Fact]
     [MemberData(nameof(GetTokensData))]
@@ -99,6 +113,8 @@ public class LexerTest
             (SyntaxKind.NumberToken, "123"),
             (SyntaxKind.IdentifierToken, "a"),
             (SyntaxKind.IdentifierToken, "abc"),
+            (SyntaxKind.StringToken, "\"Test\""),
+            (SyntaxKind.StringToken, "\"Te\"\"st\""),
         };
         return fixedTokens.Concat(dynamicTokens);
     }
@@ -132,6 +148,9 @@ public class LexerTest
             return true;
 
         if (t1Kind == SyntaxKind.NumberToken && t2Kind == SyntaxKind.NumberToken)
+            return true;
+
+        if (t1Kind == SyntaxKind.StringToken && t2Kind == SyntaxKind.StringToken)
             return true;
 
         if (t1Kind == SyntaxKind.BangToken && t2Kind == SyntaxKind.EqualsToken)

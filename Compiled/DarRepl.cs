@@ -17,10 +17,16 @@ namespace Dar.CodeAnalysis
             {
                 var isKeyword = token.Kind.ToString().EndsWith("Keyword");
                 var isNumber = token.Kind == SyntaxKind.NumberToken;
+                var isIdentifier = token.Kind == SyntaxKind.IdentifierToken;
                 if (isKeyword)
                     Console.ForegroundColor = ConsoleColor.Blue;
-                else if (!isNumber)
+                else if (isIdentifier)
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (isNumber)
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                else
                     Console.ForegroundColor = ConsoleColor.DarkGray;
+                
                 System.Console.Write(token.Text);
                 Console.ResetColor();
             }
@@ -57,14 +63,25 @@ namespace Dar.CodeAnalysis
         {
             if (string.IsNullOrEmpty(text))
                 return true;
+
+            var lastTwoLinesAreBlank = text.Split(Environment.NewLine)
+                                            .Reverse()
+                                            .TakeWhile(s => string.IsNullOrEmpty(s))
+                                            .Take(2)
+                                            .Count() == 2;
+            
+            if (lastTwoLinesAreBlank)
+                return true;
             
             var syntaxTree = SyntaxTree.Parse(text);
 
-            if (syntaxTree.Diagnostics.Any())
+            if (syntaxTree.Root.Statement.GetLastToken().IsMissing)
                 return false;
             
             return true;
         }
+
+
         protected override void EvaluateSubmission(string text)
         {
             var syntaxTree = SyntaxTree.Parse(text);
