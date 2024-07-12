@@ -1,8 +1,10 @@
+using Dar.CodeAnalysis.Symbols;
+
 namespace Dar.CodeAnalysis.Binding
 {
     internal sealed class BoundBinaryExpression : BoundExpression
     {
-        public override Type Type => Op.ResultType;
+        public override TypeSymbol Type => Op.ResultType;
         public override BoundNodeKind Kind => BoundNodeKind.BinaryExpression;
         public BoundBinaryOperator Op { get;}
         public BoundExpression Left { get; }

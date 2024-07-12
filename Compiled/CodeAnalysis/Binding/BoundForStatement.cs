@@ -1,3 +1,5 @@
+using Dar.CodeAnalysis.Symbols;
+
 namespace Dar.CodeAnalysis.Binding
 {
     internal sealed class BoundForStatement : BoundStatement

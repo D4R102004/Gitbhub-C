@@ -1,8 +1,8 @@
-namespace Dar.CodeAnalysis
+namespace Dar.CodeAnalysis.Binding
 {
-    internal sealed class LabelSymbol
+    internal sealed class BoundLabel
     {
-        public LabelSymbol(string name)
+        public BoundLabel(string name)
         {
             Name = name;
         }

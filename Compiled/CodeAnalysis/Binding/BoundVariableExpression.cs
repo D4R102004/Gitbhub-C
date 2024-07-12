@@ -1,3 +1,5 @@
+using Dar.CodeAnalysis.Symbols;
+
 namespace Dar.CodeAnalysis.Binding
 {
     internal sealed class BoundVariableExpression : BoundExpression
@@ -8,7 +10,7 @@ namespace Dar.CodeAnalysis.Binding
         }
         public override BoundNodeKind Kind => BoundNodeKind.VariableExpression;
         public VariableSymbol Variable { get; }
-        public override Type Type => Variable.Type;
+        public override TypeSymbol Type => Variable.Type;
     }
 
 }

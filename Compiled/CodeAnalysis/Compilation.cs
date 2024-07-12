@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Dar.CodeAnalysis.Binding;
 using Dar.CodeAnalysis.Lowering;
+using Dar.CodeAnalysis.Symbols;
 using Dar.CodeAnalysis.Syntax;
 namespace Dar.CodeAnalysis
 {

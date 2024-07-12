@@ -16,6 +16,7 @@ namespace Dar.CodeAnalysis.Binding
 
 
         // Expressions
+        ErrorExpression,
         LiteralExpression,
         VariableExpression,
         AssignmentExpression,

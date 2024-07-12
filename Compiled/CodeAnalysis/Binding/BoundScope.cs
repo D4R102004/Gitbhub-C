@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Dar.CodeAnalysis.Symbols;
 
 namespace Dar.CodeAnalysis.Binding
 {

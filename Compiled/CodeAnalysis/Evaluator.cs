@@ -1,5 +1,6 @@
 using System.Xml.Schema;
 using Dar.CodeAnalysis.Binding;
+using Dar.CodeAnalysis.Symbols;
 namespace Dar.CodeAnalysis
 {
     internal sealed class Evaluator
@@ -15,7 +16,7 @@ namespace Dar.CodeAnalysis
     }
     public object Evaluate()
     {
-        var labelToIndex =new Dictionary<LabelSymbol, int>();
+        var labelToIndex =new Dictionary<BoundLabel, int>();
 
         for (var i = 0; i < _root.Statements.Length; i++)
         {
@@ -140,17 +141,17 @@ namespace Dar.CodeAnalysis
                     return (int)left / (int)right;
 
                 case BoundBinaryOperatorKind.BitwiseAnd:
-                    if (b.Type == typeof(int))
+                    if (b.Type == TypeSymbol.Int)
                         return (int)left & (int)right;
                     else
                         return (bool)left & (bool)right;
                 case BoundBinaryOperatorKind.BitwiseOr:
-                    if (b.Type == typeof(int))
+                    if (b.Type == TypeSymbol.Int)
                         return (int)left | (int)right;
                     else
                         return (bool)left | (bool)right;
                 case BoundBinaryOperatorKind.BitwiseXor:
-                    if (b.Type == typeof(int))
+                    if (b.Type == TypeSymbol.Int)
                         return (int)left ^ (int)right;
                     else
                         return (bool)left ^ (bool)right;

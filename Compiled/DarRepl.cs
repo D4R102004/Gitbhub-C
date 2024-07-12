@@ -1,3 +1,4 @@
+using Dar.CodeAnalysis.Symbols;
 using Dar.CodeAnalysis.Syntax;
 using Dar.CodeAnalysis.Text;
 

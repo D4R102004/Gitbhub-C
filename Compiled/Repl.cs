@@ -214,13 +214,13 @@ namespace Dar.CodeAnalysis
                 }
             }
 
-            else if (key.Modifiers == ConsoleModifiers.Alt)
+            else if (key.Modifiers == ConsoleModifiers.Shift)
             {
                 switch (key.Key)
                 {
                     case ConsoleKey.Enter:
                     {
-                        HandleAltEnter(document, view);
+                        HandleShiftEnter(document, view);
                         break;
                     }
                 }
@@ -250,7 +250,7 @@ namespace Dar.CodeAnalysis
         }
 
 
-        private void HandleAltEnter(ObservableCollection<string> document, SubmissionView view)
+        private void HandleShiftEnter(ObservableCollection<string> document, SubmissionView view)
         {
             InsertLine(document, view);
         }
